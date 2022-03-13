@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="alert alert-warning" *ngIf="bookForm.invalid && bookForm.dirty">All fields are mandatory!!</div>
+            <form (ngSubmit)="!bookForm.invalid && saveBook()" #bookForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input class="form-control my-2" type="text" name="name" [(ngModel)]="book.name" required="required" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Author Name</label>
+                    <input class="form-control my-2" type="text" name="authorName" [(ngModel)]="book.authorName" required="required" />
+                </fieldset>
+                <div class="row">
+                    <fieldset class="form-group col-md-6">
+                        <label>Publish Date</label>
+                        <input class="form-control my-2" type="date" name="publishDate"
+                             [ngModel]="book.publishDate | date: 'yyyy-MM-dd'" (ngModelChange)="book.publishDate = $event" required="required" />
+                    </fieldset>
+                    <fieldset class="form-group col-md-6">
+                        <label>Price</label>
+                        <input class="form-control my-2" type="number" name="price" [(ngModel)]="book.price" required="required" />
+                    </fieldset>
+                </div>
+                <button type="submit" class="btn btn-success my-2">Save</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
